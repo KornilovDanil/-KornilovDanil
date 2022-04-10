@@ -1,0 +1,24 @@
+int Binar(const int size, int z) {
+	int* arr = new int[size];
+	for (int i = 0; i < size; i++) {//заполнение таблицы данными  четными числами
+		arr[i] = 2 * (i + 1);
+	}
+
+	int first = 0, last = size - 1;
+	int count = 0;//количество итераций
+	while (first < last) {
+		int midd = (first + last) / 2;
+		count++;
+		if (z == arr[midd]) {//если нашли ключ
+			break;
+		}
+		if (z > arr[midd]) {
+			first = midd + 1;
+		}
+		if (z < arr[midd]) {
+			last = midd - 1;
+		}
+	}
+	delete[]arr;
+	return count;
+}
